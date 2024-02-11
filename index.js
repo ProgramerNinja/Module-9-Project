@@ -1,19 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-// TODO: Create an array of questions for user input
-// const questions = [
-//     "What was your motivation?",
-//     "Why did you build this project? (Note: the answer is not 'Because it was a homework assignment.')",
-//     "What problem does it solve?",
-//     "What did you learn?",
-//     "What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.",
-//     "Provide instructions and examples for use.",
-//     "How many screenshots would you like to add?",
-//     "What features does your project have?",
-//     "How can someone contribute to your project?",
-//     "Have you written any tests for your project? If so, how can the user run them."
-//   ];
+
 const questions = [
     {
       type: "text",
@@ -26,15 +14,30 @@ const questions = [
       question: "Describe what your project does and what problem it solves."
     },
     {
-        type: 'list',
-        message: 'What license does your project fall under?',
-        name: 'contact',
-        choices: ['MIT', 'GNU', 'Apache'],
+      type: "text",
+      name: "motivation",
+      question: "What was your motivation create this project?"
+    },
+    {
+      type: "text",
+      name: "problem",
+      question: "What was the problem that you were trying to solve with this Project?"
+    },
+    {
+      type: 'list',
+      message: 'What license does your project fall under?',
+      name: 'contact',
+      choices: ['MIT', 'GNU', 'Apache'],
     },
     {
       type: "text",
       name: "learnings",
       question: "What did you learn?"
+    },
+    {
+      type: "text",
+      name: "features",
+      question: "Are there any feature in the project you would like ot mention?"
     },
     {
       type: "text",
@@ -48,13 +51,18 @@ const questions = [
     },
     {
       type: "number",
-      name: "numScreenshots",
-      question: "How many screenshots would you like to add?"
+      name: "screenshot",
+      question: "What is the relative address to your screenshot?"
     },
     {
       type: "text",
       name: "features",
       question: "What features does your project have?"
+    },
+    {
+      type: "text",
+      name: "credit",
+      question: "Who would you like to give credit to?"
     },
     {
       type: "text",
@@ -68,13 +76,8 @@ const questions = [
     },
     {
       type: "text",
-      name: "username",
-      question: "What is your github username"
-    },
-    {
-      type: "text",
-      name: "repolink",
-      question: "What is the link to your repo?"
+      name: "userGitLink",
+      question: "What is the link to your github?"
     },
     {
       type: "text",
