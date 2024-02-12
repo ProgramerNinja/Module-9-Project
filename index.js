@@ -31,8 +31,8 @@ const questions = [
       choices: ['MIT', 'GNU', 'Apache', ''],
     },
     {
-      type: 'list',
-      message: 'Which badge would you like?',
+      type: 'checkbox',
+      message: 'Which badge(s) would you like?',
       name: 'badge',
       choices: ['badmath', 'Always Learning'],
     },
@@ -57,7 +57,7 @@ const questions = [
       question: "Provide instructions and examples for use."
     },
     {
-      type: "number",
+      type: "text",
       name: "screenshot",
       question: "What is the relative address to your screenshot?"
     },
@@ -88,7 +88,7 @@ const questions = [
     },
     {
       type: "text",
-      name: "deployedlink",
+      name: "deployedLink",
       question: "What is the link to your deployed project?"
     }
   ];
@@ -97,7 +97,7 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(answers) {
     const readmeContent = generateReadMe(answers);
-        fs.writeFile('README.md', readmeContent, (err) =>
+        fs.writeFile('./output/README.md', readmeContent, (err) =>
         err ? console.log(err) : console.log('Successfully created README.md!')
     );
 }

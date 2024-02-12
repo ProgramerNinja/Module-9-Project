@@ -15,10 +15,11 @@ function renderLicenseBadge(license) {
 
 function renderOptioanlBadge(badge) {
   var output = "";
-  if (badge === "Always Learning") {
-    output = "![Static Badge](https://img.shields.io/badge/Always%20Learning-grey?labelColor=aqua&color=blue)"
-  } else  if (badge === "badmath") {
-    output = "![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)";
+  if (badge.includes("Always Learning")) {
+    output += "![Static Badge](https://img.shields.io/badge/Always%20Learning-grey?labelColor=aqua&color=blue) "
+  } 
+  if (badge.includes("badmath")) {
+    output += "![badmath](https://img.shields.io/github/languages/top/lernantino/badmath) ";
   }
 
   return output
@@ -26,14 +27,14 @@ function renderOptioanlBadge(badge) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {
+function renderLicenseLink(license, licenseBadge) {
   var output = "";
   if (license === "MIT") {
-    output = "https://opensource.org/license/mit/";
+    output = "[" +licenseBadge + "](https://opensource.org/license/mit/)";
   } else  if (license === "GNU") {
-    output = "https://www.gnu.org/licenses/gpl-3.0.en.html";
+    output = "[" +licenseBadge + "](https://www.gnu.org/licenses/gpl-3.0.en.html)";
   } else  if (license === "Apache") {
-    output = "https://www.apache.org/licenses/LICENSE-2.0";
+    output = "[" +licenseBadge + "](https://www.apache.org/licenses/LICENSE-2.0)";
   }
 
   return output
@@ -42,7 +43,10 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  output = `This project is being covered under the ${license}`
+  var output = ""
+  if (license !== "") {
+      output = `This project is being covered under the ${license} license`
+  }
   return output
 }
 
@@ -51,7 +55,7 @@ function generateMarkdown(data) {
   return `
   # ${data.title}
 
-  ${renderLicenseBadge(data.license)} ${renderLicenseLink(data.license)}
+  ${renderLicenseLink(data.license, renderLicenseBadge(data.license))}
 
   ## Description
 
@@ -65,6 +69,12 @@ function generateMarkdown(data) {
   - [Usage](#usage)
   - [Credits](#credits)
   - [License](#license)
+  - [Badges](#badges)
+  - [Features](#features)
+  - [Contribute](#contribute)
+  - [Tests](#tests)
+  - [Contact](#contact)
+
 
   ## Installation
 
@@ -72,8 +82,8 @@ function generateMarkdown(data) {
 
   ## Usage
 
-  - ${data.usageinstructions}
-  - the link to the deplyed version can be found here -> ${data.deployedlink}
+  - ${data.usageInstructions}
+  - Deployed Project link -> ${data.deployedLink}
 
       ![alt text](${data.screenshot})
 
@@ -85,7 +95,7 @@ function generateMarkdown(data) {
 
   - ${renderLicenseSection(data.license)}
 
-  ### A list of available licenses can be found here: [https://choosealicense.com/](https://choosealicense.com/)
+  - A list of available licenses and their meanings can be found here: [https://choosealicense.com/](https://choosealicense.com/)
 
   ## Badges
 
@@ -95,15 +105,15 @@ function generateMarkdown(data) {
 
   - ${data.features}
 
-  ## How to Contribute
+  ## Contribute
 
   - ${data.contribution}
 
   ## Tests
 
-  - ${data.testInstruction}
+  - ${data.testInstructions}
 
-  ##
+  ## Contact
 
   - Ways you can contact me for any questions: ${data.userGitLink}
 `;

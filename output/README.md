@@ -16,6 +16,9 @@
   - [Credits](#credits)
   - [License](#license)
   - [Badges](#badges)
+  - [Features](#features)
+  - [Contribute](#contribute)
+  - [Tests](#tests)
   - [Contact](#contact)
 
 
@@ -28,7 +31,7 @@
   - Using a console interface, navigate to the project root and run the command "node index.js". then answer the questions given. The finished README will be saved in the output folder.
   - Deployed Project link -> Not applicable
 
-  - [Video Walk-Through](https://drive.google.com/file/d/12Qg495WJYWq2SU9bIR9k6El-_1pNCqhB/view?usp=drive_link)
+      ![alt text](https://drive.google.com/file/d/12Qg495WJYWq2SU9bIR9k6El-_1pNCqhB/view?usp=drive_link)
 
   ## Credits
 
@@ -44,7 +47,18 @@
 
   ![Static Badge](https://img.shields.io/badge/Always%20Learning-grey?labelColor=aqua&color=blue) ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath) 
   
-  
+  ## Features
+
+  - 
+
+  ## Contribute
+
+  - 
+
+  ## Tests
+
+  - 
+
   ## Contact
 
-  - Ways you can contact me for any questions: [ProgramerNinja](https://github.com/ProgramerNinja)
+  - Ways you can contact me for any questions: 
