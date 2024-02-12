@@ -1,25 +1,63 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  var output = "";
+  if (license === "MIT") {
+    output = "![Badge License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)";
+  } else  if (license === "GNU") {
+    output = "![Badge License](https://img.shields.io/badge/License-GPL3-015d93.svg?style=for-the-badge&labelColor=blue)";
+  } else  if (license === "Apache") {
+    output = "![Badge License](https://img.shields.io/badge/License-Apache_2.0-961b1f?style=for-the-badge&labelColor=D22128)";
+  }
+
+  return output
+}
+
+function renderOptioanlBadge(badge) {
+  var output = "";
+  if (badge === "Always Learning") {
+    output = "![Static Badge](https://img.shields.io/badge/Always%20Learning-grey?labelColor=aqua&color=blue)"
+  } else  if (badge === "badmath") {
+    output = "![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)";
+  }
+
+  return output
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  var output = "";
+  if (license === "MIT") {
+    output = "https://opensource.org/license/mit/";
+  } else  if (license === "GNU") {
+    output = "https://www.gnu.org/licenses/gpl-3.0.en.html";
+  } else  if (license === "Apache") {
+    output = "https://www.apache.org/licenses/LICENSE-2.0";
+  }
+
+  return output
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  output = `This project is being covered under the ${license}`
+  return output
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
   # ${data.title}
 
+  ${renderLicenseBadge(data.license)} ${renderLicenseLink(data.license)}
+
   ## Description
 
-  - ${data.motivation}What was your motivation?
-  - ${data.problem}What problem does it solve?
-  - ${data.learnings}What did you learn?
+  - Motivation: ${data.motivation}
+  - Problem solved: ${data.problem}
+  - What was learned: ${data.learnings}
 
   ## Table of Contents
 
@@ -35,7 +73,7 @@ function generateMarkdown(data) {
   ## Usage
 
   - ${data.usageinstructions}
-  - the link to the deplyed version can be found here -> ${deployedlink}
+  - the link to the deplyed version can be found here -> ${data.deployedlink}
 
       ![alt text](${data.screenshot})
 
@@ -45,17 +83,14 @@ function generateMarkdown(data) {
 
   ## License
 
-  The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-  - ${selectedLicense}
+  - ${renderLicenseSection(data.license)}
 
-  ---
-
-  🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
+  ### A list of available licenses can be found here: [https://choosealicense.com/](https://choosealicense.com/)
 
   ## Badges
 
-  ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-  - ${chosenBadge}
+  ${renderOptioanlBadge(data.badge)}
+  
   ## Features
 
   - ${data.features}

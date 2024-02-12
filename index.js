@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateReadMe = require('./utils/generateMarkdown');
 
 const questions = [
     {
@@ -26,8 +27,14 @@ const questions = [
     {
       type: 'list',
       message: 'What license does your project fall under?',
-      name: 'contact',
-      choices: ['MIT', 'GNU', 'Apache'],
+      name: 'license',
+      choices: ['MIT', 'GNU', 'Apache', ''],
+    },
+    {
+      type: 'list',
+      message: 'Which badge would you like?',
+      name: 'badge',
+      choices: ['badmath', 'Always Learning'],
     },
     {
       type: "text",
@@ -90,7 +97,7 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(answers) {
     const readmeContent = generateReadMe(answers);
-        s.writeFile('README.md', readmeContent, (err) =>
+        fs.writeFile('README.md', readmeContent, (err) =>
         err ? console.log(err) : console.log('Successfully created README.md!')
     );
 }
